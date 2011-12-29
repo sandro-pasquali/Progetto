@@ -1,0 +1,166 @@
+<html><head><title></title>
+<script language="Javascript"></script>
+<script language="Javascript" src="IconList.js"></script>
+<script language="Javascript">
+
+var loaded = new Array();
+
+function makeIcon(ic)
+  {
+    ICONICS.innerHTML += '<a href="javascript:addGroup(\'' + ic + '\');"><img src="images/icons/null/' + ic + '.gif" border=0 width=12 height=24 hspace=4 alt="' + ic + '"></a>';
+    return;
+  }
+
+function addGroup(g)
+  {
+    top.frames[0].closeWin();
+    var c = g || DAFORM.category.options[DAFORM.category.selectedIndex].text
+	switch(c)
+	  {
+	    case 'alternative':
+		  if(!loaded['alternative'])
+		    {
+		      top.frames[0].$ALTERNATIVE.Draw();
+			  loaded['alternative'] = 1;
+			  makeIcon('alternative');
+			} 
+		top.frames[0].$SCREEN.MoveTo(10,10);
+		break;
+
+	    case 'blues':
+		  if(!loaded['blues'])
+		    {
+		      top.frames[0].$BLUES.Draw();
+			  loaded['blues'] = 1;
+			  makeIcon('blues');
+			}
+		  top.frames[0].$SCREEN.MoveTo(10,400);
+		break;
+
+	    case 'classical':
+		  if(!loaded['classical'])
+		    {
+		      top.frames[0].$CLASSICAL.Draw();
+			  loaded['classical'] = 1;
+			  makeIcon('classical');
+			}
+		  top.frames[0].$SCREEN.MoveTo(10,1400);
+		break;
+
+	    case 'country':
+		  if(!loaded['country'])
+		    {
+		      top.frames[0].$COUNTRY.Draw();
+			  loaded['country'] = 1;
+			  makeIcon('country');
+			}
+		  top.frames[0].$SCREEN.MoveTo(400,2400);
+		break;
+
+	    case 'electronic':
+		  if(!loaded['electronic'])
+		    {
+		      top.frames[0].$ELECTRONIC.Draw();
+			  loaded['electronic'] = 1;
+			  makeIcon('electronic');
+			}
+		  top.frames[0].$SCREEN.MoveTo(400,3400);
+		break;
+
+	    case 'hiphop':
+		  if(!loaded['hiphop'])
+		    {
+		      top.frames[0].$HIPHOP.Draw();
+			  loaded['hiphop'] = 1;
+			  makeIcon('hiphop');
+			}
+		  top.frames[0].$SCREEN.MoveTo(400,4400);
+		break;
+		
+	    case 'jazz':
+		  if(!loaded['jazz'])
+		    {
+		      top.frames[0].$JAZZ.Draw();
+			  loaded['jazz'] = 1;
+			  makeIcon('jazz');
+			}
+		  top.frames[0].$SCREEN.MoveTo(1400,5400);
+		break;
+
+	    case 'metal':
+		  if(!loaded['metal'])
+		    {
+		      top.frames[0].$METAL.Draw();
+			  loaded['metal'] = 1;
+			  makeIcon('metal');
+			}
+		  top.frames[0].$SCREEN.MoveTo(1400,6400);
+		break;
+
+	    case 'newage':
+		  if(!loaded['newage'])
+		    {
+		      top.frames[0].$NEWAGE.Draw();
+			  loaded['newage'] = 1
+			  makeIcon('newage');
+			}
+		  top.frames[0].$SCREEN.MoveTo(1400,7400);
+		break;
+
+	    case 'pop':
+		  if(!loaded['pop'])
+		    {
+		      top.frames[0].$POP.Draw();
+			  loaded['pop'] = 1
+			  makeIcon('pop');
+			}
+		  top.frames[0].$SCREEN.MoveTo(2400,8400);
+		break;
+
+	    case 'urban':
+		  if(!loaded['urban'])
+		    {
+		      top.frames[0].$URBAN.Draw();
+			  loaded['urban'] = 1;
+			  makeIcon('urban');
+			}
+		  top.frames[0].$SCREEN.MoveTo(2400,9400);
+		break;
+
+	    case 'world':
+		  if(!loaded['world'])
+		    {
+		      top.frames[0].$WORLD.Draw();
+			  loaded['world'] = 1;
+			  makeIcon('world');
+			}
+		  top.frames[0].$SCREEN.MoveTo(2400,10400);
+		break;
+		
+		default:
+		  alert(c);
+		break;
+	  }
+	return;
+  }
+</script>
+</head>
+<body STYLE="border:3px threedhighlight outset; background-color:#999999;" onselectstart="return false;">
+<center>
+
+<form name="DAFORM">
+<select name="category" onchange="addGroup()">
+<option value="" SELECTED>[choose]</option>
+<script language="Javascript">
+for(x=0; x<$ICONLIST.length; x++)
+  {
+    document.writeln('<option name="' + $ICONLIST[x] + '">' + $ICONLIST[x] + '</option>');
+  }
+</script>
+</select>
+
+<p>
+<DIV ID="ICONICS" STYLE="width:130; background-color:#f0f0f0; border: 1px black solid;"></DIV>
+</center>
+</body>
+</html>

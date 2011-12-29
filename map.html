@@ -1,0 +1,116 @@
+<html><head><title></title>
+<script language="Javascript"></script>
+<script language="Javascript" src="IconList.js"></script>
+<script language="Javascript" src="Scroller.js"></script>
+<script language="Javascript" src="Group.js"></script>
+<script language="Javascript" src="dragLite.js"></script>
+<script language="Javascript">
+
+var $ENV = new Object();
+with($ENV)
+  {
+    agent = navigator.userAgent.toLowerCase();
+    mac = (this.agent.indexOf("mac") != -1);
+    ie55 = (this.agent.indexOf("msie 5.5") != -1);
+    ie5 = (this.agent.indexOf("msie 5.0") != -1);
+    ie4 = (this.ie5 || this.ie55);
+    ns = (navigator.appName.indexOf('Netscape')!=-1);
+  }
+
+// set up screen parameters.  This needs to be done before content
+// begins rendering.
+var $SCREEN = new Scroller();
+$SCREEN.SetEasing(($ENV.ns) ? '' : 'end');
+$SCREEN.SetFactor(.2);
+
+$ALTERNATIVE = new Group('ALTERNATIVE',10,10);
+$BLUES = new Group('BLUES',10,400);
+$CLASSICAL = new Group('CLASSICAL',10,1400);
+$COUNTRY = new Group('COUNTRY',400,2400);
+$ELECTRONIC = new Group('ELECTRONIC',400,3400);
+$HIPHOP = new Group('HIPHOP',400,4400);
+$JAZZ = new Group('JAZZ',1400,5400);
+$METAL = new Group('METAL',1400,6400);
+$NEWAGE = new Group('NEWAGE',1400,7400);
+$POP = new Group('POP',2400,8400);
+$URBAN = new Group('URBAN',2400,9400);
+$WORLD = new Group('WORLD',26400,10400);
+
+function init()
+  {
+    $EI.mapW = document.body.clientWidth;
+    $EI.mapH = document.body.clientHeight;
+    with(document)
+      {
+        onmousemove = mouseMove;
+        onmousedown = mouseDown;
+        onmouseup = mouseUp;
+        onclick = mouseClick;
+		onscroll = handleScroll;
+		onresize = handleResize;
+      }
+	initWindows();	
+  }
+  
+function handleScroll()
+  {
+    if(!$SCREEN.scrollOn)
+      {
+        window.scrollTo(0,0);
+        SCRLAYER.focus();
+        window.event.cancelBubble = 'true';
+        window.event.returnValue = 'false';
+      }
+	return;
+  }
+function handleResize()
+  {
+    return;
+  }
+</script>
+<link rel="stylesheet" href="default.css" type="text/css">
+</head>
+<body STYLE="border:3px threedhighlight outset; background-color:#999999;" onselectstart="return false;" onload="init()" scroll="no">
+
+<table cellpadding=0 cellspacing=0 border=0 width=10000 height=10000><tr><td></td></tr></table>
+
+<DIV ID="SCRLAYER" STYLE="position:absolute; top:0; left:0; width:20000; height:20000;" onselectstart="return false;"></DIV>
+
+<DIV CLASS="DRAG_OBJECT" ID="BLAH2" STYLE="position:absolute; left:200; top:100; width:450; height:280; visibility:hidden; background-image:url(images/windows/base.gif);">
+<DIV CLASS="DRAG_TITLE" ID="DTITLE" STYLE="position:absolute; left:5; top:5; width:440; height:20; color:black; font-family:Verdana; font-size:12px; font-weight:bold; padding:1px; cursor:default;"></DIV>
+<DIV CLASS="DRAG_BODY" ID="DBODY" STYLE="position:absolute; width:438; height:246; left:6; top:27; color:black; font-family:Verdana; font-size:10px; padding:4px;">
+<IMG ID="QIMAGE" SRC="images/defaults/country.gif" width=64 height=64 STYLE="position:absolute; top:6; left:6; border:1px white solid;">
+<DIV ID="QDESC" STYLE="position:absolute; top:6; left:75; width:150; height:66; padding:2px; overflow:auto;">
+A black and evil madness that chills one's very soul as if touched by the devil's own hand.
+</DIV>
+<DIV ID="QINFO" STYLE="position:absolute; top:74; left:6; width:220; height:170; padding:2px; overflow:auto;">
+
+Artist: MonsterMagnet<br>
+Title: SuperJudge<br>
+Released: 1999<br>
+Label: MCA
+</DIV>
+<DIV ID="QLINKS" style="position:absolute; top:174; left:6 width:220; height:60; padding:2px; overflow:auto;"></DIV>
+
+<DIV STYLE="position:absolute; top:210; left:6; padding:2px;">
+<IMG src="images/windows/listen.gif" STYLE="width:18; height:18" hspace=2><IMG src="images/windows/buy.gif" STYLE="width:18; height:18" hspace=2><IMG src="images/windows/save.gif" STYLE="width:18; height:18" hspace=2></DIV>
+
+<DIV STYLE="position:absolute; top:6; left:240; font-family:Verdana; font-size:11px; font-weight:bold; color:#000000">COMMENTS</DIV>
+<IMG src="images/windows/littlemen.gif" STYLE="position:absolute; top:30; left:240;">
+<DIV STYLE="position:absolute; top:160; left:240; font-family:Verdana; font-size:10px; color:#000000">blah blah blah blah blah blah<br> blah blah blah<br> blah blah blah<br> blah blah blah blah blah blah<br> blah blah blah blah blah blah<br></DIV>
+</DIV> <!-- close body -->
+</DIV> <!-- close win -->
+
+<!-- setup viewer -->
+
+<DIV CLASS="DRAG_OBJECT" ID="VIEWER" STYLE="position:absolute; left:10; top:10; width:290; height:37; background-image:url(images/viewer.gif); z-index:500;" NOGHOST=1 NOZ=1><DIV CLASS="DRAG_TITLE" ID="VIEWERGRAB" STYLE="position:absolute; left:0; top:0; width:290; height:37;"></DIV></DIV>
+<IMG ID="VTR" STYLE="position:absolute; top:14; left:326; width:5; height:5; z-index:500;" src="images/top_right.gif">
+<IMG ID="VTL" STYLE="position:absolute; top:14; left:303; width:5; height:5; z-index:500;" src="images/top_left.gif">
+<IMG ID="VBR" STYLE="position:absolute; top:38; left:326; width:5; height:5; z-index:500;" src="images/down_right.gif">
+<IMG ID="VBL" STYLE="position:absolute; top:38; left:303; width:5; height:5; z-index:500;" src="images/down_left.gif">
+<!-- end viewer setup -->
+
+<DIV ID="HAHA" STYLE="position:absolute; top:0; left:0; width:100; height:100; z-index:40000;"></DIV>
+
+</body>
+</html>

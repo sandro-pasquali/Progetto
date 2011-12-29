@@ -1,0 +1,22 @@
+
+.VOTES
+  {
+    position:absolute; 
+	color:#777777; 
+	font-family:Verdana,Arial; 
+	font-size:8px;
+  }
+
+.CONTAINER
+  {
+    position:absolute;
+	width:12;
+	height:24;
+  }
+  
+.ICON
+  {
+    width:12;
+	height:24;
+	cursor:hand;
+  }
